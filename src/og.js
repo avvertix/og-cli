@@ -1,5 +1,7 @@
 import * as fs from 'fs';
 
+import {join} from 'path';
+
 import satori from 'satori'
 
 import parse from 'html-react-parser'
@@ -13,10 +15,9 @@ export default async function og(htmlFilePath, flags) {
 
     console.log(flags);
 
-    // const htmlFilePath = arguments[0];
-    // const width = arguments[1];
-    // const height = arguments[2];
-    // const fonts = JSON.parse(arguments[3]);
+    if(!htmlFilePath){
+      throw new Error("Specify an html file path");
+    }
 
     const html = fs.readFileSync(htmlFilePath, { encoding:'utf8', flag:'r' });
 
@@ -37,13 +38,13 @@ export default async function og(htmlFilePath, flags) {
             fonts: [
                     {
                         name: 'Inter',
-                        data: fs.readFileSync(`./fonts/Inter-Regular.ttf`),
+                        data: fs.readFileSync(join(flags.cwd, `fonts/Inter-Regular.ttf`)),
                         weight: 400,
                         style: 'regular',
                     },
                     {
                         name: 'Inter',
-                        data: fs.readFileSync(`./fonts/Inter-Bold.ttf`),
+                        data: fs.readFileSync(join(flags.cwd, `fonts/Inter-Bold.ttf`)),
                         weight: 700,
                         style: 'bold',
                     },

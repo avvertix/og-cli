@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import meow from 'meow';
 import og from './src/og.js';
+import * as process from 'process';
 
 const cli = meow(`
 	Usage
@@ -22,6 +23,7 @@ const cli = meow(`
 });
 
 og(cli.input.at(0), {
+	cwd: process.cwd(),
 	output: 'image.png',
 	...cli.flags
 });
