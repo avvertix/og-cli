@@ -4,7 +4,7 @@ import satori from 'satori'
 
 import parse from 'html-react-parser'
 
-import { Resvg } from '@resvg/resvg-js'
+// import { Resvg } from '@resvg/resvg-js'
 
 
 export default async function og(htmlFilePath, flags) {
@@ -70,13 +70,13 @@ export default async function og(htmlFilePath, flags) {
         // logLevel: 'debug', // Default Value: error
       }
 
-    const resvg = new Resvg(svg, opts)
-    const pngData = resvg.render()
-    const pngBuffer = pngData.asPng()
+    // const resvg = new Resvg(svg, opts)
+    // const pngData = resvg.render()
+    // const pngBuffer = pngData.asPng()
 
-    // console.log(svg);
+    // // console.log(svg);
 
-    await fs.promises.writeFile(flags.output, pngBuffer);
+    // await fs.promises.writeFile(flags.output, pngBuffer);
 
 
 }
