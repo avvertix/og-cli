@@ -6,7 +6,7 @@ export default {
   input: 'index.js',
   output: {
     dir: 'build',
-    format: 'es'
+    format: 'cjs'
   },
   plugins: [nodeResolve(), commonjs(), json()]
 };

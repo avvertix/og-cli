@@ -1,0 +1,15 @@
+{
+    "bin": {
+        "og": "build/index.js"
+    },
+    "pkg": {
+        "scripts": "build/index.js",
+        "assets": "fonts/**/*",
+        "targets": [
+            "node18-linux",
+            "node18-macos",
+            "node18-win"
+        ],
+        "outputPath": "dist"
+    }
+}

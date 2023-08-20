@@ -8,7 +8,7 @@
   "type": "module",
   "main": "index.js",
   "bin": {
-    "og": "index.js"
+    "og": "build/index.js"
   },
   "repository": "avvertix/og-cli",
   "files": [
@@ -25,10 +25,13 @@
     "@rollup/plugin-commonjs": "^25.0.4",
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^15.2.0",
+    "pkg": "^5.8.1",
     "rollup": "^3.28.0"
   },
   "scripts": {
-    "build": "rollup -c"
+    "dev": "node index.js",
+    "build": "rollup -c",
+    "dist": "rollup -c && pkg --out-dir dist --compress GZip -c pkg.config.json build/index.js"
   },
   "engines": {
     "node": ">=16.0.0"
