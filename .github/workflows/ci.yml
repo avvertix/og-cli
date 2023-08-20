@@ -41,4 +41,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
+        mv ./dist/index-linux ./dist/og-linux
+        mv ./dist/index-macos ./dist/og-macos
+        mv ./dist/index-win.exe ./dist/og-win.exe
         gh release upload ${{ github.event.release.tag_name }} ./dist/index-linux ./dist/index-macos ./dist/index-win.exe
