@@ -8,7 +8,7 @@
   "type": "module",
   "main": "index.js",
   "bin": {
-    "og": "index.js"
+    "og": "build/index.js"
   },
   "repository": "avvertix/og-cli",
   "files": [
@@ -16,16 +16,25 @@
     "/dist"
   ],
   "dependencies": {
-    "@resvg/resvg-js": "^2.4.1",
     "html-react-parser": "^4.2.1",
     "meow": "^12.1.0",
     "react": "^18.2.0",
     "satori": "^0.10.3"
   },
-  "devDependencies": {},
-  "scripts": {},
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.4",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.2.0",
+    "pkg": "^5.8.1",
+    "rollup": "^3.28.0"
+  },
+  "scripts": {
+    "dev": "node index.js",
+    "build": "rollup -c",
+    "dist": "rollup -c && pkg --out-dir dist --compress GZip -c pkg.config.json build/index.js"
+  },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=16.0.0"
   },
   "bugs": "https://github.com/avvertix/og-cli/issues",
   "keywords": [
