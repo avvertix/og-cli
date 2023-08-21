@@ -2,6 +2,11 @@
 import meow from 'meow';
 import og from './src/og.js';
 import {cwd} from 'process';
+import {dirname} from 'path';
+import {fileURLToPath} from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const cli = meow(`
 	Usage
@@ -37,7 +42,7 @@ const cli = meow(`
 });
 
 let opts = {
-	cwd: cwd(),
+	cwd: __dirname,
 	output: null,
 	...cli.flags
 };
