@@ -9,13 +9,13 @@ import parse from 'html-react-parser'
 
 export default async function og(htmlFilePath, flags) {
 
-  console.log(`Generating SVG from ${htmlFilePath}...`);
-
   if (!htmlFilePath) {
     throw new Error("Specify an html file path");
   }
 
-  const html = fs.readFileSync(htmlFilePath, { encoding: 'utf8', flag: 'r' });
+  const html = flags.html ? htmlFilePath : fs.readFileSync(htmlFilePath, { encoding: 'utf8', flag: 'r' });
+
+  
 
   // fonts.length
   //             ? fonts.map((font) => ({
@@ -48,8 +48,15 @@ export default async function og(htmlFilePath, flags) {
     },
   );
 
+  if(flags.output){
+    console.log(`Generating SVG from ${htmlFilePath} in ${flags.output}`);
 
-  await fs.promises.writeFile(flags.output, svg);
+    await fs.promises.writeFile(flags.output, svg);
+    return;
+  }
+
+  console.log(svg);
+
 
 
 }

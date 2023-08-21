@@ -9,6 +9,7 @@ const cli = meow(`
 
 	Options
 	  --output, -o  Output file name
+	  --html  Consider input as html
 
 	Examples
 	  $ og file.html
@@ -18,6 +19,9 @@ const cli = meow(`
 		output: {
 			type: 'string',
 			shortFlag: 'o'
+		},
+		html: {
+			type: 'boolean'
 		},
 		width: {
 			type: 'number',
@@ -32,8 +36,18 @@ const cli = meow(`
 	}
 });
 
-og(cli.input.at(0), {
+let opts = {
 	cwd: cwd(),
-	output: 'card.svg',
+	output: null,
 	...cli.flags
-});
+};
+
+if (opts.html && cli.input.length === 0) {
+	process.stdin.resume()
+	process.stdin.setEncoding('utf8')
+	process.stdin.on('data', (data) => {
+	  og(String(data).trim(), opts);
+	})
+  } else {
+	og(cli.input.at(0), opts);
+  }
