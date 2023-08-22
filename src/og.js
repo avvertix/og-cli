@@ -34,13 +34,13 @@ export default async function og(htmlFilePath, flags) {
       fonts: [
         {
           name: 'Inter',
-          data: fs.readFileSync(join(flags.cwd, `../fonts/Inter-Regular.ttf`)),
+          data: fs.readFileSync(join(flags.cwd, `./fonts/Inter-Regular.ttf`)),
           weight: 400,
           style: 'regular',
         },
         {
           name: 'Inter',
-          data: fs.readFileSync(join(flags.cwd, `../fonts/Inter-Bold.ttf`)),
+          data: fs.readFileSync(join(flags.cwd, `./fonts/Inter-Bold.ttf`)),
           weight: 700,
           style: 'bold',
         },

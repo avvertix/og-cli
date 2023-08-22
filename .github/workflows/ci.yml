@@ -46,4 +46,5 @@ jobs:
         mv ./dist/index-linux ./dist/og-linux
         mv ./dist/index-macos ./dist/og-macos
         mv ./dist/index-win.exe ./dist/og-win.exe
-        gh release upload ${{ github.event.release.tag_name }} ./dist/og-linux ./dist/og-macos ./dist/og-win.exe
+        cp ./build/index.js ./build/og.js
+        gh release upload ${{ github.event.release.tag_name }} ./build/og.js
